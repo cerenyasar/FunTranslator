@@ -25,8 +25,6 @@ namespace FunTranslator2
                             )
                         );
             container.RegisterType<IFunTranslatorService, FunTranslatorService>();
-            //container.RegisterType<FunTranslatorService>(new InjectionConstructor(ConfigurationManager.AppSettings["ApiUrl"]));
-            //container.RegisterType<string>(ConfigurationManager.AppSettings["ApiUrl"]);
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

@@ -4,6 +4,10 @@
 
 $(document).ready(function () {
     console.log("ready!");
+    $('#translations thead tr')
+        .clone(true)
+        .addClass('filters')
+        .appendTo('#translations thead');
     getTranslationRecords();
 });
 
@@ -13,18 +17,9 @@ function getTranslationRecords() {
         type: 'POST',
         cache: false,
         data: {},
-        //dataType: 'json',
         success: function (data) {
             console.log(data);
             $("#translations").show();
-            $('#translations thead tr')
-                .clone(true)
-                .addClass('filters')
-                .appendTo('#translations thead');
-            //$('#translations thead th').each(function (i) {
-            //    var title = $('#example thead th').eq($(this).index()).text();
-            //    $(this).html('<input type="text" placeholder="' + title + '" data-index="' + i + '" />');
-            //});
             var table = $("#translations").DataTable({
                 orderCellsTop: true,
                 fixedHeader: true,
@@ -33,10 +28,6 @@ function getTranslationRecords() {
                 columns: [
                     {
                         'data': 'Id',
-                        //render: function (data, type, row) {
-                        //    console.log(data);
-                        //    return data;
-                        //}
                     },
                     {
                         'data': 'Text'
@@ -62,7 +53,7 @@ function getTranslationRecords() {
                                 $(api.column(colIdx).header()).index()
                             );
                             var title = $(cell).text();
-                            $(cell).html('<input type="text" placeholder="' + title + '" />');
+                            $(cell).html('<input type="text" />');
 
                             // On every keypress in this input
                             $(
@@ -73,7 +64,7 @@ function getTranslationRecords() {
                                 .on('change', function (e) {
                                     // Get the search value
                                     $(this).attr('title', $(this).val());
-                                    var regexr = '({search})'; //$(this).parents('th').find('select').val();
+                                    var regexr = '({search})'; 
 
                                     var cursorPosition = this.selectionStart;
                                     // Search the column for that value
@@ -117,7 +108,6 @@ function getTranslation() {
         data: {
             text: $("#Text").val()
         },
-        //dataType: 'json',
         success: function (data) {
             $("#Translated").val(data.Response.contents.Translated);
             getTranslationRecords();
@@ -125,25 +115,7 @@ function getTranslation() {
         error: function (request, error) {
             alert("Request: " + JSON.stringify(request));
         },
-        //async: false
-    });
-    //$.ajax({
-
-    //    url: 'https://api.funtranslations.com/translate/leetspeak.json',
-    //    type: 'GET',
-    //    data: {
-    //        'text': "where are you"
-    //    },
-    //    dataType: 'json',
-    //    success: function (data) {
-    //        $("#Translated").val(data.content.Translated);
-    //        alert('Data: ' + data);
-    //    },
-    //    error: function (request, error) {
-    //        alert("Request: " + JSON.stringify(request));
-    //    },
-    //    async: false
-    //});
+    });    
 }
 
 

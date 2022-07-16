@@ -30,15 +30,6 @@ namespace FunTranslator2.UnitTests
                 }
             };
 
-            //new JsonResult
-            //{
-            //    Data = new
-            //    {
-            //        Status = "1",
-            //        Response = translatedData.contents.Translated
-            //    }
-            //};
-
             var jss = new JavaScriptSerializer();
             var json = jss.Serialize(expectedReponse);
             string url = "https://api.funtranslations.com/translate/leetspeak.json";
@@ -58,14 +49,12 @@ namespace FunTranslator2.UnitTests
 
             IFunTranslatorService service = new FunTranslatorService(httpClient);
 
-            //string text = "?text=hello";
-            ResponseDTO actualReponse = await service.GetTranslationX("Hello");
+            ResponseDTO actualReponse = await service.GetTranslationResult("Hello");
 
 
 
             //assert
             CollectionAssert.Equals(expectedReponse, actualReponse);
-            //CollectionAssert.AreEquivalent(expectedTeamList, actualTeamList);
         }
     
     }

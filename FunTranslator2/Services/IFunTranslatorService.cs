@@ -9,7 +9,6 @@ namespace FunTranslator2.Services
 {
     public interface IFunTranslatorService 
     {
-        ResponseDTO GetTranslationResult(string requestUri);
-        Task<ResponseDTO> GetTranslationX(string requestUri);
+        Task<ResponseDTO> GetTranslationResult(string requestUri);
     }
 }

@@ -12,31 +12,14 @@
         <div class="col-md-6 ">
             <label for="Text" class="form-label">Text</label>
             @Html.TextAreaFor(m => m.Text, new { @class = "form-control ", @placeholder = "Please type in your text here so that our Leet Speak can do the magic and convert it to Leet Speak ..." })
-            @*, new { @class = "form-control", @cols = "30", @placeholder = "Please type in your text here so that our Leet Speak can do the magic and convert it to Leet Speak ..." })*@
-
+           
         </div>
         <div class="col-md-6 ">
             <label for="Translated" class="form-label">Translated Text</label>
             @Html.TextAreaFor(m => m.Translated, new { @class = "form-control ", @style = "resize: none", @readonly = "true" })
-            @*, @readonly = "readonly" })*@
         </div>
-        @*<div class="col-md-4">
-                <h2>Web Hosting</h2>
-                <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-            </div>*@
     </div>
    
-    @*<div class="row">
-            <div class="mb-3">
-                <label class="form-label">Text</label>
-                @Html.TextAreaFor(m => m.Text, new { @class = "form-control", @cols = "30", @placeholder = "Please type in your text here so that our Leet Speak can do the magic and convert it to Leet Speak ..." })
-            </div>
-            <div class="mb-3">
-                @Html.TextAreaFor(m => m.Text, new { @class = "form-control", @cols = "30", @placeholder = "Please type in your text here so that our Leet Speak can do the magic and convert it to Leet Speak ..." })
-
-            </div>
-        </div>*@
     <div class="row">
         <div class="form-group col-md-12 text-center" style="padding-top:10px">
             <button type="button" class="btn btn-primary" onclick="getTranslation()">Translate</button>

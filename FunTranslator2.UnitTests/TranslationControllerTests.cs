@@ -17,18 +17,6 @@ namespace FunTranslator2.UnitTests
         [TestMethod]
         public void InsertTranslationTest()
         {
-
-            //var data = new List<Translation>
-            //{
-            //    new Translation { Id= 1, Text= "welcome",Translated = "wElkOmE", TranslationType = "leetspeak" },
-            //}.AsQueryable();
-
-            //var mockSet = new Mock<DbSet<Translation>>();
-            //mockSet.As<IQueryable<Translation>>().Setup(m => m.Provider).Returns(data.Provider);
-            //mockSet.As<IQueryable<Translation>>().Setup(m => m.Expression).Returns(data.Expression);
-            //mockSet.As<IQueryable<Translation>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            //mockSet.As<IQueryable<Translation>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
-
             // Arrange
             var mockSet = new Mock<DbSet<Translation>>();
             var mockContext = new Mock<ApplicationDbContext>();
@@ -66,7 +54,6 @@ namespace FunTranslator2.UnitTests
             mockSet.As<IQueryable<Translation>>().Setup(m => m.Expression).Returns(expectedList.Expression);
             mockSet.As<IQueryable<Translation>>().Setup(m => m.ElementType).Returns(expectedList.ElementType);
             mockSet.As<IQueryable<Translation>>().Setup(m => m.GetEnumerator()).Returns(expectedList.GetEnumerator());
-            //var mockSet = new Mock<DbSet<Translation>>();
             var mockContext = new Mock<ApplicationDbContext>();
             mockContext.Setup(m => m.Translations).Returns(mockSet.Object);
 

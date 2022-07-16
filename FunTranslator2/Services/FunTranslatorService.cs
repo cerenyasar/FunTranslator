@@ -21,40 +21,10 @@ namespace FunTranslator2.Services
         {
 
             this._httpClient = httpClient;
-            //GetDivisionsUri = new UriBuilder($"{url}");
             GetDivisionsUri = new UriBuilder($"https://api.funtranslations.com/translate/leetspeak.json");
         }
 
-
-        public ResponseDTO GetTranslationResult(string requestUri)
-        {
-            try
-            {
-                //var requestUri = "http://api.songs.com/songs";
-                _httpClient.BaseAddress = new Uri(ConfigurationManager.AppSettings["ApiUrl"]);
-                var response = _httpClient.GetAsync(requestUri);
-               // response.Wait();
-
-                if (response.Result.IsSuccessStatusCode)
-                {
-                    var responseData = response.Result.Content.ReadAsStringAsync();
-                    responseData.Wait();
-                    var jss = new JavaScriptSerializer();
-                    var translatedData = jss.Deserialize<ResponseDTO>(responseData.Result);
-                    return translatedData;
-                }
-                else
-                {
-                    throw new Exception("Translation failed!");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }  
-        }
-
-        public async Task<ResponseDTO> GetTranslationX(string requestUri)
+        public async Task<ResponseDTO> GetTranslationResult(string requestUri)
         {
             //ConfigurationManager.AppSettings["ApiUrl"]
             GetDivisionsUri.Query = $"text={requestUri}";
